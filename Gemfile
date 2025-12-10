@@ -59,6 +59,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Hot realod for rails app
+  gem "hotwire-spark"
 end
 
 group :test do
