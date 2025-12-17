@@ -1,0 +1,47 @@
+<div class="relative w-full max-w-md mx-auto">
+  <!-- Pin superior -->
+  <div class="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+    <%= render "shared/svg/pin"%>
+  </div>
+
+  <!-- Botão de coração (favorito) -->
+  <div class="absolute -top-2 -right-2 z-20">
+    <button class="w-12 h-12 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center shadow-lg transition-colors">
+      <%= render "shared/svg/heart_white"%>
+    </button>
+  </div>
+
+  <!-- Card principal com rotação -->
+  <div class="transform rotate-2 hover:rotate-0 transition-transform duration-300">
+    <!-- Container branco do polaroid -->
+    <div class="bg-white p-4 pb-16 rounded-lg shadow-2xl">
+      <!-- Imagem -->
+      <div class="relative overflow-hidden rounded-md">
+        <img 
+          src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=800&q=80" 
+          alt="Noite Épica - Jogando Monopoly"
+          class="w-full h-80 object-cover"
+        />
+      </div>
+
+      <!-- Texto inferior do polaroid -->
+      <div class="mt-4 px-2">
+        <h3 class="text-2xl font-bold text-gray-800 mb-1" style="font-family: 'Caveat', cursive, sans-serif;">
+          Noite Épica!
+        </h3>
+        <p class="text-sm text-gray-600 italic">
+          20 Nov
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-it amarelo -->
+  <div class="absolute -bottom-8 -right-6 transform rotate-6 z-10">
+    <div class="w-52 bg-yellow-200 p-4 shadow-lg" style="font-family: 'Caveat', cursive, sans-serif;">
+      <p class="text-gray-800 text-base leading-relaxed">
+        Pedro te2 uma jogada INCRÍVEL no final! 😱
+      </p>
+    </div>
+  </div>
+</div>
