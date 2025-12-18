@@ -1,9 +1,9 @@
 class SessionRecordsController < ApplicationController
   def index
-    @filters = {
-      todos: { label: "Todos", icon: "❤️", color: "pink" },
-      familia: { label: "Família", icon: "❤️", color: "pink" },
-      amigos: { label: "Amigos", icon: "👥", color: "blue" }
-    }
+    @filters = [
+      { label: "Todos", icon: "🌟" },
+      { label: "Família", icon: "❤️" },
+      { label: "Amigos", icon: "👥" }
+    ]
   end
 end

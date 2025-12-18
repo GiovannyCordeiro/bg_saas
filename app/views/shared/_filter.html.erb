@@ -1,33 +1,23 @@
 <div data-controller="filter" class="w-full">
   
   <!-- Estado 2: Múltiplos filtros e botão de filtros ativos -->
-  <div data-filter-target="state2" class="border-2 border-dashed border-yellow-400 rounded-2xl bg-yellow-50 p-6">
+  <div data-filter-target="allItem" class="border-2 border-dashed border-yellow-400 rounded-2xl bg-yellow-50 p-6">
     <div class="flex items-center gap-4 flex-wrap">
       <span class="text-orange-600 text-lg">🏷️</span>
       <span class="text-gray-700 italic font-medium">Filtrar por:</span>
       
       <div class="flex gap-3">
-        <button 
-          class="filter-btn flex items-center gap-2 px-6 py-2 bg-pink-100 text-pink-600 rounded-full border-2 border-yellow-400 hover:bg-pink-200 transition-all font-medium shadow-sm">
-          <span>❤️</span>
-          <span>Todos</span>
-        </button>
 
-        <button 
-          data-action="click->filter#toggleFilter"
-          data-filter-name="familia"
-          class="filter-btn flex items-center gap-2 px-6 py-2 bg-pink-100 text-pink-600 rounded-full border-2 border-yellow-400 hover:bg-pink-200 transition-all font-medium shadow-sm">
-          <span>❤️</span>
-          <span>Família</span>
-        </button>
-
-        <button 
-          data-action="click->filter#toggleFilter"
-          data-filter-name="familia"
-          class="filter-btn flex items-center gap-2 px-6 py-2 bg-pink-100 text-pink-600 rounded-full border-2 border-yellow-400 hover:bg-pink-200 transition-all font-medium shadow-sm">
-          <span>❤️</span>
-          <span>Família</span>
-        </button>
+        <% @filters.each do |filter| %>
+          <button 
+            data-action="click->filter#toggleFilter"
+            data-filter-name="<%= filter[:label] %>"
+            class="filter-btn flex items-center gap-2 px-6 py-2 bg-pink-100 text-pink-600 rounded-full border-2 border-yellow-400 hover:bg-pink-200 transition-all font-medium shadow-sm"
+          >
+            <span><%= filter[:icon] %></span>
+            <span><%= filter[:label] %></span>
+          </button>
+        <% end %>
         
       </div>
     </div>
