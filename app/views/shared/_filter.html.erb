@@ -6,7 +6,7 @@
       <span class="text-orange-600 text-lg">🏷️</span>
       <span class="text-gray-700 italic font-medium">Filtrar por:</span>
       
-      <div class="flex gap-3">
+      <div class="flex gap-4">
 
         <% @filters.each do |filter| %>
           <button 
@@ -18,16 +18,18 @@
             <span><%= filter[:label] %></span>
           </button>
         <% end %>
-        
+
       </div>
     </div>
 
     <!-- Botão de filtros ativos -->
     <div class="mt-4">
       <button 
-        class="hidden flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-full hover:from-pink-600 hover:to-pink-500 transition-all font-medium shadow-md">
+        class="hidden flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-full hover:from-pink-600 hover:to-pink-500 transition-all font-medium shadow-md"
+        data-filter-target="buttonCount"
+        >
         <span>→</span>
-        <span>2 filtros ativos</span>
+        <span data-filter-target="textCount">2 filtros ativos</span>
         <span>❤️</span>
       </button>
     </div>
