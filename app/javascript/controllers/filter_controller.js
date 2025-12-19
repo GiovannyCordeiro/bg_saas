@@ -1,31 +1,59 @@
 import { Controller } from "@hotwired/stimulus"
-
 let list_filters = new Set()
 
 export default class extends Controller {
-  // Estilos para deixar o input em foco - ring-3 ring-[#ffb900] scale-105 
   static targets = [ "allItem", "buttonCount", "textCount" ]
+
+  connect() {
+    this.highlightAllButton()
+  }
 
   toggleFilter(e){ 
     const nameFilter = e.currentTarget.getAttribute('data-filter-name')
     const buttonClicked = e.currentTarget
     const isActive = list_filters.has(nameFilter)
 
-    this.removeAllFilters(nameFilter)
+    if (nameFilter === "Todos") {
+      this.clearAllFilters()
+      this.highlightAllButton()
+      return
+    }
+
+    this.removeAllButtonHighlight()
 
     this.toggleButtonStyles(buttonClicked, !isActive)
     this.toggleFilterInList(nameFilter, isActive)
     this.updateFilterCount()
+
+    if (list_filters.size === 0) {
+      this.highlightAllButton()
+    }
+
+    console.log(list_filters)
   }
 
-  // removeAllFilters(name) {
-  //   if (name === "Todos") {
-  //     let allButtons = this.allItemTarget.querySelectorAll('[data-filter-name]')
-  //     let [first, ...all]
+  clearAllFilters() {
+    const allButtons = this.element.querySelectorAll('[data-filter-name]:not([data-filter-name="Todos"])')
+    allButtons.forEach(button => {
+      this.toggleButtonStyles(button, false)
+    })
+    list_filters.clear()
+  }
 
-  //     console.log(allButtons.shift())
-  //   }
-  // }
+  highlightAllButton() {
+    const allButton = this.element.querySelector('[data-filter-name="Todos"]')
+    if (allButton) {
+      this.toggleButtonStyles(allButton, true)
+    }
+    this.buttonCountTarget.classList.add('hidden')
+  }
+
+  removeAllButtonHighlight() {
+    const allButton = this.element.querySelector('[data-filter-name="Todos"]')
+    if (allButton) {
+      this.toggleButtonStyles(allButton, false)
+    }
+  }
 
   toggleButtonStyles(button, shouldActivate) {
     const classes = ['ring-3', 'ring-[#ffb900]', 'scale-105']
