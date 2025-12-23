@@ -1,5 +1,5 @@
 <div data-form-target="formSession" class="absolute fixed z-30 w-[100%] h-[100vh] top-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
-  <div class="w-[45%] bg-[#fff9ec] h-[90vh] border-2 rounded-lg border-[#FFDF20] p-5">
+  <div class="w-[45%] bg-[#fffaeb] h-[90vh] border-2 rounded-lg border-[#FFDF20] p-5">
     <%= form_for @session_record do |f| %>
 
       <header class="w-full h-[8vh] flex items-center justify-between">
@@ -19,6 +19,18 @@
           X
         </div>
       </header>
+
+      <div class="w-full mt-8 p-5 h-100 bg-[#fffef9] rounded-lg border-2 border-dashed border-[#FFDF20] relative flex flex-col justify-center -rotate-0.5 shadow-lg">
+        <div class="w-40 h-10 bg-[#fb64b6] text-white flex items-center justify-center absolute -top-4 left-1/2 -translate-x-1/2 z-10 rounded-4xl">
+          Foto da jogatina
+        </div>
+
+        <div class="w-full h-[90%] border-2 border-dashed rounded-lg border-[#FFDF20] hover:bg-[#fffbe2] hover:cursor-pointer transition flex flex-col items-center justify-center gap-3">
+          <%= render "shared/svg/picture" %>
+          <h2 class="text-gray-600">Clique para adicionar uma foto</h2>
+          <span class="text-gray-600">Torne o momento ainda mais memoravel</span>
+        </div>
+      </div>
 
       <%= f.label :title, "Titulo" %>
       <%= f.text_field :title, label: "Titulo" %>
