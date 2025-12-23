@@ -5,5 +5,7 @@ class SessionRecordsController < ApplicationController
       { label: "Família", icon: "❤️" },
       { label: "Amigos", icon: "👥" }
     ]
+
+    @session_record = SessionRecord.new
   end
 end

@@ -1,4 +1,4 @@
-<header class="w-full h-[15vh] bg-amber-50 flex justify-around items-center">
+<header data-controller="form" class="w-full h-[15vh] bg-amber-50 flex justify-around items-center">
   <div class="flex items-center justify-center gap-5">
     <div class="p-3 shadow-md rounded-md shadow-md -rotate-5 bg-gradient-to-br from-[#FB64B6] to-[#FF2056] flex justify-center align-center">
       <%= render "shared/svg/book"%>
@@ -8,11 +8,16 @@
       <span class="text-sm">Registro de todas as minhas sessoes de board games</span>
     </div>
   </div>
-  <button class="px-5 py-3 bg cursor-pointer flex gap-2 items-center rounded-xl shadow-md text-white bg-linear-to-r from-[#F6339A] to-[#FF2056]">
+  <button 
+    data-action="click->form#toggleForm"
+    class="px-5 py-3 bg cursor-pointer flex gap-2 items-center rounded-xl shadow-md text-white bg-linear-to-r from-[#F6339A] to-[#FF2056]"
+  >
     <%= render "shared/svg/add"%>
     Adicionar registro
   </button>
+<%= render 'shared/form' %>
 </header>
+
 
 <main>
   <section id="highlight-moment" class="mt-14 w-full h-[85vh] flex justify-center">
