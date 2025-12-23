@@ -1,13 +1,25 @@
-
-
 <div data-form-target="formSession" class="absolute fixed z-30 w-[100%] h-[100vh] top-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
   <div class="w-[45%] bg-[#fff9ec] h-[90vh] border-2 rounded-lg border-[#FFDF20] p-5">
-    <button data-action="click->form#toggleForm" class="bg-black p-5 text-white">
-      Close
-    </button>
-
-    <h2>Nova sessao</h2>
     <%= form_for @session_record do |f| %>
+
+      <header class="w-full h-[8vh] flex items-center justify-between">
+        <div class="flex items-center gap-5">
+          <div class="w-15 h-15 flex items-center justify-around bg-gradient-to-br from-[#FB64B6] to-[#FF2056] rounded-full">
+            <%= render "shared/svg/camera"%>
+          </div>
+          <div>
+            <h2 class="text-2xl">Nova lembranca especial</h2>
+            <span class="text-sm">Guarde todo momento para sempre</span>
+          </div>
+        </div>
+        <div 
+          data-action="click->form#toggleForm" 
+          class="h-10 w-10 rounded-full bg-gray-200 text-black shadow-xl cursor-pointer flex items-center justify-center"
+        >
+          X
+        </div>
+      </header>
+
       <%= f.label :title, "Titulo" %>
       <%= f.text_field :title, label: "Titulo" %>
 
