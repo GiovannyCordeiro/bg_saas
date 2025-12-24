@@ -28,8 +28,6 @@ export default class extends Controller {
     if (list_filters.size === 0) {
       this.highlightAllButton()
     }
-
-    console.log(list_filters)
   }
 
   clearAllFilters() {

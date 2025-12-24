@@ -20,16 +20,29 @@
         </div>
       </header>
 
-      <div class="w-full mt-8 p-5 h-100 bg-[#fffef9] rounded-lg border-2 border-dashed border-[#FFDF20] relative flex flex-col justify-center -rotate-0.5 shadow-lg">
+      <div class="w-full mt-8 p-5 h-110 bg-[#fffef9] rounded-lg border-2 border-dashed border-[#FFDF20] relative flex flex-col justify-center -rotate-0.5 shadow-lg">
         <div class="w-40 h-10 bg-[#fb64b6] text-white flex items-center justify-center absolute -top-4 left-1/2 -translate-x-1/2 z-10 rounded-4xl">
           Foto da jogatina
         </div>
 
-        <div class="w-full h-[90%] border-2 border-dashed rounded-lg border-[#FFDF20] hover:bg-[#fffbe2] hover:cursor-pointer transition flex flex-col items-center justify-center gap-3">
-          <%= render "shared/svg/picture" %>
-          <h2 class="text-gray-600">Clique para adicionar uma foto</h2>
-          <span class="text-gray-600">Torne o momento ainda mais memoravel</span>
+        <div data-form-target="choiceImage" data-action="click->form#uploadInputFile" class="w-full h-[90%] border-2 border-dashed rounded-lg border-[#FFDF20] hover:bg-[#fffbe2] hover:cursor-pointer transition flex flex-col items-center justify-center gap-3">
+          <div class="flex flex-col items-center gap-2">
+            <%= render "shared/svg/picture" %>
+            <h2 class="text-gray-600">Clique para adicionar uma foto</h2>
+            <span class="text-gray-600">Torne o momento ainda mais memoravel</span>
+          </div>
         </div>
+
+        <div data-form-target="selectedImage" class="hidden w-full h-full flex items-center justify-center">
+          <div data-action="click->form#uploadInputFile"  class="w-[45%] h-[90%] shadow-lg p-5 text-center flex flex-col gap-8 cursor-pointer">
+            <div class="w-[90%] h-[75%]">
+              <img class="w-full h-full" id="previewImage" alt="Preview">
+            </div>
+            <span class="text-sm text-gray-500"> Clique para trocar a foto</span>
+          </div>
+        </div>
+
+        <input data-action="change->form#newImageUpload" data-form-target="inputFile" class="hidden" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
       </div>
 
       <%= f.label :title, "Titulo" %>
