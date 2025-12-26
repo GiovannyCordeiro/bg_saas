@@ -2,7 +2,8 @@ class SessionRecord < ApplicationRecord
   validates :title, presence: true, absence: true
   validate :title_is_str
 
-  has_many :list_session_layer
+  has_many :list_session_player
+  has_many :list_session_game
 
   has_one_attached :image
 
