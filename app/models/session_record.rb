@@ -4,6 +4,8 @@ class SessionRecord < ApplicationRecord
 
   has_many :list_session_layer
 
+  has_one_attached :image
+
   def title_is_str
     unless title.is_a?(String)
       errors.add(:title, "This atribute neeeds to string!")
