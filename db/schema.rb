@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_24_191715) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_24_193700) do
   create_table "games", force: :cascade do |t|
     t.text "category"
     t.datetime "created_at", null: false
     t.text "title", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "list_session_players", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "player_id", null: false
+    t.integer "session_record_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_list_session_players_on_player_id"
+    t.index ["session_record_id"], name: "index_list_session_players_on_session_record_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -32,4 +41,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_24_191715) do
     t.string "title"
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "list_session_players", "players"
+  add_foreign_key "list_session_players", "session_records"
 end
