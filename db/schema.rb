@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_26_160330) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_26_161607) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -46,6 +46,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_160330) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "list_session_games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "game_id", null: false
+    t.integer "session_record_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_list_session_games_on_game_id"
+    t.index ["session_record_id"], name: "index_list_session_games_on_session_record_id"
+  end
+
   create_table "list_session_players", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "player_id", null: false
@@ -72,6 +81,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_26_160330) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "list_session_games", "games"
+  add_foreign_key "list_session_games", "session_records"
   add_foreign_key "list_session_players", "players"
   add_foreign_key "list_session_players", "session_records"
 end
