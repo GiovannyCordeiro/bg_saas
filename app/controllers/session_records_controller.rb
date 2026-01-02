@@ -7,13 +7,36 @@ class SessionRecordsController < ApplicationController
     ]
 
     @session_record = SessionRecord.new
+
+    @last_session = SessionRecord.last
   end
 
   def create
-    puts "PARMETROOO #{params}"
+    @filters = [
+      { label: "Todos", icon: "🌟" },
+      { label: "Família", icon: "❤️" },
+      { label: "Amigos", icon: "👥" }
+    ]
+
+    @session_record = SessionRecord.new(session_record_params)
+
+    if @session_record.save
+      redirect_to session_records_path
+    else
+      puts "Erros: #{@session_record.errors.full_messages}"
+      render :index
+    end
   end
 
+  private
+
   def session_record_params
-    params.require(:session_record).permit(:image)
+    params.require(:session_record).permit(
+        :title,
+        :subtitle,
+        :description,
+        :session_duration,
+        :image
+      )
   end
 end

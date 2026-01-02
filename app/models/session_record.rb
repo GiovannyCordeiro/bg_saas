@@ -1,5 +1,5 @@
 class SessionRecord < ApplicationRecord
-  validates :title, presence: true, absence: true
+  validates :title, presence: true
   validate :title_is_str
 
   has_many :list_session_player
