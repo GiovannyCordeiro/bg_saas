@@ -1,7 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
+const namePlayers = new Set();
+
 export default class extends Controller {
-  static targets = [ "formSession", "inputFile", "choiceImage", "selectedImage"]
+  static targets = [ "formSession", "inputFile", "choiceImage", "selectedImage", "inputAddPlayer", "hiddenFieldListPlayerSession" ]
 
   toggleForm(e){
     this.formSessionTarget.classList.toggle('hidden')
@@ -51,4 +53,29 @@ export default class extends Controller {
     this.choiceImageTarget.classList.toggle("hidden")
     this.selectedImageTarget.classList.toggle("hidden")
   }
+
+  // Logic for adding players and games will be implemented here
+
+  add(e){
+    if (e.key == "Enter" || e.type == "click"){
+      e.preventDefault();
+      const namePlayer = this.inputAddPlayerTarget.value.trim();
+      namePlayers.add(namePlayer);
+
+      this.inputAddPlayerTarget.value = "";
+      this.updateHiddenInput();
+
+      console.log(namePlayers)
+    }
+  }
+
+  updateHiddenInput(){
+    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(namePlayers)
+    console.log(this.hiddenFieldListPlayerSessionTarget)
+  }
+
+  updateDisplay(){
+    
+  }
+
 }

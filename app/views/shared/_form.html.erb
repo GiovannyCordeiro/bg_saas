@@ -64,6 +64,15 @@
       <%= f.label :session_duration, "Duracao da jogatina" %>
       <%= f.number_field :session_duration %>
 
+      <div data-controller="tag-player">
+        <input data-form-target="inputAddPlayer" data-action="keydown->form#add" class="p-5" type="text" name="" id="" placeholder="Ex: Jhon, Maria, Sidney">
+        <button type="button" data-action="click->form#add">➕ Adicionar</button>
+      </div>
+
+      <%= f.hidden_field :list_session_player, data: { form_target: "hiddenFieldListPlayerSession"} %>
+
+      <%= f.hidden_field :list_session_game %>
+
       <%= f.submit 'criar' %>
     <% end %>
 

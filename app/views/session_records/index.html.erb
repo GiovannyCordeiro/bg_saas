@@ -15,7 +15,7 @@
     <%= render "shared/svg/add"%>
     Adicionar registro
   </button>
-<%= render 'shared/form' %>
+  <%= render 'shared/form' %>
 </header>
 
 
@@ -100,7 +100,7 @@
   <!-- Área de conteúdo filtrado -->
   <div class="mt-8 p-6 rounded-lg flex flex-wrap justify-start gap-10">
     <% if @last_session.image.attached? %>
-    <p>Giovanny</p>
+      <p>Giovanny</p>
       <%= image_tag @last_session.image.variant(resize_to_limit: [300, 300]) %>
     <% end %>
     <%= render "shared/memory_card"%>
