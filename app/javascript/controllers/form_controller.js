@@ -1,9 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
 
-const namePlayers = new Set();
+const playersName = new Set();
+const gamesName = new Set();
 
 export default class extends Controller {
-  static targets = [ "formSession", "inputFile", "choiceImage", "selectedImage", "inputAddPlayer", "hiddenFieldListPlayerSession" ]
+  static targets = [ 
+      "formSession", "inputFile", "choiceImage", 
+      "selectedImage", "inputAddPlayer", "hiddenFieldListPlayerSession", 
+      "inputAddGame", "sessionGameListHiddenField" ]
 
   toggleForm(e){
     this.formSessionTarget.classList.toggle('hidden')
@@ -56,22 +60,38 @@ export default class extends Controller {
 
   // Logic for adding players and games will be implemented here
 
-  add(e){
+  addNamePlayer(e){
     if (e.key == "Enter" || e.type == "click"){
       e.preventDefault();
       const namePlayer = this.inputAddPlayerTarget.value.trim();
-      namePlayers.add(namePlayer);
+      playersName.add(namePlayer);
 
       this.inputAddPlayerTarget.value = "";
-      this.updateHiddenInput();
+      this.updateHiddenInputPlayer();
 
-      console.log(namePlayers)
     }
   }
 
-  updateHiddenInput(){
-    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(namePlayers)
-    console.log(this.hiddenFieldListPlayerSessionTarget)
+  addNameGame(e){
+    if (e.key == "Enter" || e.type == "click"){
+      e.preventDefault();
+
+      const nameGame = this.inputAddGameTarget.value.trim();
+      gamesName.add(nameGame);
+
+      this.inputAddGameTarget.value = "";
+      this.updateHiddenInputGames();
+    }
+  }
+
+  updateHiddenInputPlayer(){
+    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(playersName)
+    console.log(this.hiddenFieldListPlayerSessionTarget.value)
+  }
+
+  updateHiddenInputGames(){
+    this.sessionGameListHiddenFieldTarget.value = JSON.stringify(gamesName)
+    console.log(this.sessionGameListHiddenFieldTarget)
   }
 
   updateDisplay(){
