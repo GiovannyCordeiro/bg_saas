@@ -8,7 +8,7 @@ class SessionRecordsController < ApplicationController
 
     @session_record = SessionRecord.new
 
-    @last_session = SessionRecord.last
+    @sessions_list = SessionRecord.all
   end
 
   def create

@@ -17,16 +17,18 @@
     <div class="bg-white p-4 pb-16 rounded-lg shadow-2xl">
       <!-- Imagem -->
       <div class="relative overflow-hidden rounded-md">
-        <%= image_tag session.image %>
+        <% if session.image.attached? %>
+          <%= image_tag session.image %>
+        <% end %>
       </div>
 
       <!-- Texto inferior do polaroid -->
       <div class="mt-4 px-2">
         <h3 class="text-2xl font-bold text-gray-800 mb-1" style="font-family: 'Caveat', cursive, sans-serif;">
-          Noite Épica!
+          <%= session.title %>
         </h3>
         <p class="text-sm text-gray-600 italic">
-          20 Nov
+          <%= session.created_at.strftime("%d %b") %>
         </p>
       </div>
     </div>
@@ -36,7 +38,7 @@
   <div class="absolute -bottom-8 -right-6 transform rotate-6 z-10">
     <div class="w-52 bg-yellow-200 p-4 shadow-lg" style="font-family: 'Caveat', cursive, sans-serif;">
       <p class="text-gray-800 text-base leading-relaxed">
-        Pedro te2 uma jogada INCRÍVEL no final! 😱
+        <%= truncate(session.description, length: 20, omission: "...") %>
       </p>
     </div>
   </div>

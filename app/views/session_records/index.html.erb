@@ -99,7 +99,15 @@
   
   <!-- Área de conteúdo filtrado -->
   <div class="mt-8 p-6 rounded-lg flex flex-wrap justify-start gap-10">
-    <%= render "shared/memory_card", session: @last_session %>
+
+    <% if @sessions_list.blank? %>
+      <p class="text-gray-600">Nenhuma sessão registrada ainda.</p>
+    <% else %>
+      <% @sessions_list.each do |session| %>
+        <%= render "shared/memory_card", session: session %>
+      <% end %>
+    <% end %>
+
   </div>
 
   <!-- Fim dos sessions -->
