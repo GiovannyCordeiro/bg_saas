@@ -85,13 +85,11 @@ export default class extends Controller {
   }
 
   updateHiddenInputPlayer(){
-    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(playersName)
-    console.log(this.hiddenFieldListPlayerSessionTarget.value)
+    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(Array.from(playersName))
   }
 
   updateHiddenInputGames(){
-    this.sessionGameListHiddenFieldTarget.value = JSON.stringify(gamesName)
-    console.log(this.sessionGameListHiddenFieldTarget)
+    this.sessionGameListHiddenFieldTarget.value = JSON.stringify(Array.from(gamesName))
   }
 
   updateDisplay(){
