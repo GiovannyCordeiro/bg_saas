@@ -28,6 +28,10 @@ class SessionRecordsController < ApplicationController
     end
   end
 
+  def show
+    @session = SessionRecord.find(params[:id])
+  end
+
   private
 
   def session_record_params

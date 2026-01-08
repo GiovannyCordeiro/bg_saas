@@ -104,7 +104,9 @@
       <p class="text-gray-600">Nenhuma sessão registrada ainda.</p>
     <% else %>
       <% @sessions_list.each do |session| %>
-        <%= render "shared/memory_card", session: session %>
+        <%= link_to session_record_path(session) do %>
+          <%= render "shared/memory_card", session: session %>
+        <% end %>
       <% end %>
     <% end %>
 

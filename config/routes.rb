@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   get "session_records", to: "session_records#index"
   post "session_records", to: "session_records#create"
+
+  get "session_records/:id", to: "session_records#show", as: :session_record
 end
