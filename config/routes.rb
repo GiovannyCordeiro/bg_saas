@@ -11,10 +11,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # resources :session_records, only: %i[ index create show edit ]
+
   root "session_records#index"
 
   get "session_records", to: "session_records#index"
   post "session_records", to: "session_records#create"
 
   get "session_records/:id", to: "session_records#show", as: :session_record
+  get "session_records/:id/edit", to: "session_records#edit"
 end

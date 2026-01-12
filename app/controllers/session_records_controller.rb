@@ -32,9 +32,15 @@ class SessionRecordsController < ApplicationController
     @session = SessionRecord.find(params[:id])
   end
 
+  def edit
+    @session = SessionRecord.find(params[:id])
+  end
+
   private
 
   def session_record_params
+    # preciso colocar os atributos de lista de jogadores e lista de jogos!
+
     params.require(:session_record).permit(
         :title,
         :subtitle,
