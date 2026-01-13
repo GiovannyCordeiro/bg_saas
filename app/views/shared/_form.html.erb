@@ -52,11 +52,42 @@
         %>
       </div>
 
-      <%= f.label :title, "Titulo" %>
-      <%= f.text_field :title, label: "Titulo" %>
 
-      <%= f.label :subtitle, "Subtitulo" %>
-      <%= f.text_field :subtitle %>
+      <div class="flex gap-7 p-2 mt-10">
+        <!-- Título Card -->
+        <div class="bg-yellow-100 rounded-2xl p-6 w-96 shadow-lg rotate-1">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <h3 class="text-lg font-medium text-gray-700">
+              <%= f.label :title, "Titulo" %>
+            </h3>
+          </div>
+          
+          <div class="border-2 border-yellow-400 rounded-lg bg-yellow-50">
+            <%= f.text_field :title, placeholder: "Domingo Mágico ✨", class:"w-full h-full p-3 text-sm text-gray-600" %>
+          </div>
+        </div>
+
+        <!-- Subtítulo Card -->
+        <div class="bg-pink-100 rounded-2xl p-6 w-96 shadow-lg -rotate-1">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+            </svg>
+            <h3 class="text-lg font-medium text-gray-700">
+              <%= f.label :subtitle, "Subtitulo" %>
+            </h3>
+          </div>
+          
+          <div class="border-2 border-pink-300 rounded-lg bg-white">
+            <!-- trocar para calendario -->
+            <%= f.text_field :subtitle, placeholder: "10/01/2025 🗓️", class: "w-full h-full p-3 text-sm text-gray-600" %>
+          </div>
+        </div>
+      </div>
+      
 
       <%= f.label :description, "Conte um pouco do momento" %>
       <%= f.text_area :description %>
