@@ -131,6 +131,8 @@
         </div>
       </div>
 
+      <%= f.hidden_field :list_session_player, data: { form_target: "hiddenFieldListPlayerSession"} %>
+
       <div class="max-w-4xl mx-auto p-6 rounded-lg bg-[#fff7ed] shadow-lg mt-5">
         <!-- Título -->
         <div class="flex items-center gap-2 mb-4">
@@ -155,10 +157,15 @@
         <div class="flex gap-3 mb-4">
           <input 
             type="text" 
-            placeholder="outro jogo..." 
+            data-form-target="inputAddGame" 
+            placeholder="Dixit, Castle Combo, Scout" 
+            data-action="keydown->form#addNameGame" 
             class="flex-1 px-4 py-3 bg-white border-2 border-orange-300 rounded-lg focus:outline-none focus:border-orange-500 text-gray-700 text-sm"
           />
-          <button class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium hover:cursor-pointer">
+          <button
+            data-action="click->form#addNameGame"
+            class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium hover:cursor-pointer"
+          >
             Adicionar
           </button>
         </div>
@@ -169,19 +176,6 @@
             Castle combo
           </span>
         </div>
-      </div>
-
-      <%= f.hidden_field :list_session_player, data: { form_target: "hiddenFieldListPlayerSession"} %>
-
-      <div>
-        <input 
-          data-form-target="inputAddGame" 
-          data-action="keydown->form#addNameGame" 
-          class="p-5" 
-          type="text"
-          placeholder="Dixit, Castle Combo, Scout"
-        />
-        <button type="button" data-action="click->form#addNameGame">➕ Adicionar</button>
       </div>
 
       <%= f.hidden_field :list_session_game, data: { form_target: "sessionGameListHiddenField"} %>
