@@ -131,9 +131,6 @@
         </div>
       </div>
 
-      <%= f.label :session_duration, "Duracao da jogatina" %>
-      <%= f.number_field :session_duration, placeholder: "30m" %>
-
       <%= f.hidden_field :list_session_player, data: { form_target: "hiddenFieldListPlayerSession"} %>
 
       <div>
@@ -148,6 +145,10 @@
       </div>
 
       <%= f.hidden_field :list_session_game, data: { form_target: "sessionGameListHiddenField"} %>
+
+
+      <%= f.label :session_duration, "Duracao da jogatina" %>
+      <%= f.number_field :session_duration, placeholder: "30m" %>
 
       <%= f.submit 'criar' %>
     <% end %>
