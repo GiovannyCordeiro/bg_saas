@@ -16,7 +16,7 @@
           data-action="click->form#toggleForm" 
           class="h-10 w-10 rounded-full bg-gray-200 text-black shadow-xl cursor-pointer flex items-center justify-center"
         >
-          X
+          <%= render "shared/svg/close" %>
         </div>
       </header>
 
@@ -139,7 +139,7 @@
           <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
           </svg>
-          <h2 class="text-2xl font-handwriting text-gray-800">Quais jogos?</h2>
+          <h2 class="text-2xl font-handwriting text-gray-800 text-xl">Quais jogos?</h2>
         </div>
 
         <!-- Tags de Jogos -->
@@ -178,10 +178,49 @@
         </div>
       </div>
 
+
+      <div class="bg-[#ffe4e6] rounded-3xl p-6 shadow-sm my-7">
+        
+        <!-- Header com Ícone -->
+        <div class="flex items-center gap-2 mb-4">
+          <svg class="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h2 class="text-xl font-handwriting text-gray-800">Quanto tempo jogamos?</h2>
+        </div>
+
+        <!-- Input Container -->
+        <div class=" rounded-lg mb-4 shadow-sm">
+          <div class="relative">
+            <%= text_field_tag :horas_jogadas, 
+                nil, 
+                placeholder: "Horas jogadas...",
+                class: "w-full px-4 py-3 pr-12 border-2 border-[#ffa1ad] rounded-lg text-gray-700 placeholder-gray-400 text-sm focus:border-2 focus:border-[#fe2666] focus:outline-none" %>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <%= f.hidden_field :list_session_game, data: { form_target: "sessionGameListHiddenField"} %>
 
       <%= f.label :session_duration, "Duracao da jogatina" %>
       <%= f.number_field :session_duration, placeholder: "30m" %>
+
+
+      <div class="flex gap-4">
+        <!-- Botão Cancelar -->
+        <%= link_to "#", class: "flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-2xl text-center font-medium transition-colors" do %>
+          Cancelar
+        <% end %>
+
+        <!-- Botão Salvar -->
+        <%= button_tag class: "flex-1 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-4 rounded-2xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2" do %>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+          </svg>
+          Salvar Lembrança
+        <% end %>
+      </div>
 
       <%= f.submit 'criar' %>
     <% end %>

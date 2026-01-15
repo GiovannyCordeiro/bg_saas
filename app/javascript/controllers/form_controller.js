@@ -68,7 +68,6 @@ export default class extends Controller {
 
       this.inputAddPlayerTarget.value = "";
       this.updateHiddenInputPlayer();
-
     }
   }
 
