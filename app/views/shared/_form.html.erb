@@ -205,20 +205,18 @@
 
       <div class="flex gap-4">
         <!-- Botão Cancelar -->
-        <%= link_to "#", class: "flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-2xl text-center font-medium transition-colors" do %>
+        <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-700 py-4 rounded-2xl text-center font-medium transition-colors cursor-pointer">
           Cancelar
-        <% end %>
+        </button>
 
         <!-- Botão Salvar -->
-        <%= button_tag class: "flex-1 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-4 rounded-2xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2" do %>
+        <%= f.button type: 'submit', class: "flex-1 bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-4 rounded-2xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 cursor-pointer" do %>
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
           </svg>
-          Salvar Lembrança
+          Salvar lembrança
         <% end %>
       </div>
-
-      <%= f.submit 'criar' %>
     <% end %>
 
   </div>
