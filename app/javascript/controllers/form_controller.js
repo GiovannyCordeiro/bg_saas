@@ -7,7 +7,7 @@ export default class extends Controller {
   static targets = [ 
       "formSession", "inputFile", "choiceImage", 
       "selectedImage", "inputAddPlayer", "hiddenFieldListPlayerSession", 
-      "inputAddGame", "sessionGameListHiddenField" ]
+      "inputAddGame", "sessionGameListHiddenField", "wrapperListPlayers" ]
 
   toggleForm(e){
     this.formSessionTarget.classList.toggle('hidden')
@@ -68,10 +68,41 @@ export default class extends Controller {
 
       this.inputAddPlayerTarget.value = "";
       this.updateHiddenInputPlayer();
+      this.updateDisplayPlayerNames();
     }
   }
 
-  addNameGame(e){
+  removePlayerName(e){
+    e.preventDefault()
+    playersName.delete(e.currentTarget.dataset.name);
+
+    this.updateDisplayPlayerNames();
+  }
+
+  updateHiddenInputPlayer(){
+    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(Array.from(playersName))
+  }
+
+  updateDisplayPlayerNames(){
+    const list_players_name_html = []
+    playersName.forEach(name => {
+      const divPlayer = `<div data-name="${name}" data-action="click->form#removePlayerName" class="inline-flex items-center gap-2 bg-green-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer">
+              <p class="text-sm font-medium">${name}</p>
+              <div class="text-gray-600 hover:text-gray-800">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+              </div>
+            </div>`;
+      list_players_name_html.push(divPlayer)
+    })
+
+    const string_elements = list_players_name_html.join(' ')
+
+    this.wrapperListPlayersTarget.innerHTML = string_elements
+  }
+
+    addNameGame(e){
     if (e.key == "Enter" || e.type == "click"){
       e.preventDefault();
 
@@ -83,16 +114,8 @@ export default class extends Controller {
     }
   }
 
-  updateHiddenInputPlayer(){
-    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(Array.from(playersName))
-  }
-
   updateHiddenInputGames(){
     this.sessionGameListHiddenFieldTarget.value = JSON.stringify(Array.from(gamesName))
-  }
-
-  updateDisplay(){
-    
   }
 
 }
