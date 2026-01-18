@@ -7,7 +7,8 @@ export default class extends Controller {
   static targets = [ 
       "formSession", "inputFile", "choiceImage", 
       "selectedImage", "inputAddPlayer", "hiddenFieldListPlayerSession", 
-      "inputAddGame", "sessionGameListHiddenField", "wrapperListPlayers" ]
+      "inputAddGame", "sessionGameListHiddenField", "wrapperListPlayers",
+      "wrapperGames"]
 
   toggleForm(e){
     this.formSessionTarget.classList.toggle('hidden')
@@ -77,6 +78,7 @@ export default class extends Controller {
     playersName.delete(e.currentTarget.dataset.name);
 
     this.updateDisplayPlayerNames();
+    this.updateHiddenInputPlayer();
   }
 
   updateHiddenInputPlayer(){
@@ -86,7 +88,7 @@ export default class extends Controller {
   updateDisplayPlayerNames(){
     const list_players_name_html = []
     playersName.forEach(name => {
-      const divPlayer = `<div data-name="${name}" data-action="click->form#removePlayerName" class="inline-flex items-center gap-2 bg-green-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer">
+      const divPlayer = `<div type="button" data-name="${name}" data-action="click->form#removePlayerName" class="inline-flex items-center gap-2 bg-green-200 text-gray-700 px-4 py-2 rounded-full cursor-pointer">
               <p class="text-sm font-medium">${name}</p>
               <div class="text-gray-600 hover:text-gray-800">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -111,11 +113,34 @@ export default class extends Controller {
 
       this.inputAddGameTarget.value = "";
       this.updateHiddenInputGames();
+      this.updateDisplayGames();
     }
+  }
+
+  removeGameName(e){
+    gamesName.delete(e.currentTarget.dataset.name);
+
+    this.updateDisplayGames();
+    this.updateHiddenInputGames();
   }
 
   updateHiddenInputGames(){
     this.sessionGameListHiddenFieldTarget.value = JSON.stringify(Array.from(gamesName))
+  }
+
+  updateDisplayGames(){
+    const listGamesHTML = []
+    gamesName.forEach(nameGame => {
+      const gameElement = `<button type="button" data-name="${nameGame}" data-action="click->form#removeGameName" class="flex gap-2 items-center px-4 px-4 py-2 text-sm bg-white text-orange-600 rounded-full font-medium cursor-pointer hover:bg-orange-100 transition-colors border-2 border-orange-400">
+            ${nameGame}
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+            </svg>
+          </button>`
+      listGamesHTML.push(gameElement)
+    })
+
+    this.wrapperGamesTarget.innerHTML = listGamesHTML.join(' ')
   }
 
 }
