@@ -18,14 +18,16 @@ class SessionRecordsController < ApplicationController
       { label: "Amigos", icon: "👥" }
     ]
 
-    @session_record = SessionRecord.new(session_record_params)
+    puts "Testing inputs: #{@session_record}"
 
-    if @session_record.save
-      redirect_to session_records_path
-    else
-      puts "Erros: #{@session_record.errors.full_messages}"
-      render :index
-    end
+    # @session_record = SessionRecord.new(session_record_params)
+
+    # if @session_record.save
+    #   redirect_to session_records_path
+    # else
+    #   puts "Erros: #{@session_record.errors.full_messages}"
+    #   render :index
+    # end
   end
 
   def show
@@ -46,6 +48,8 @@ class SessionRecordsController < ApplicationController
         :subtitle,
         :description,
         :session_duration,
+        :list_session_game,
+        :list_session_game,
         :image
       )
   end
