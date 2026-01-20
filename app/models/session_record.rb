@@ -1,4 +1,9 @@
 class SessionRecord < ApplicationRecord
+  # Title - string
+  # subtitle - string
+  # description - string
+  # session_duration - decimal
+
   validates :title, presence: true
   validate :title_is_str
 
