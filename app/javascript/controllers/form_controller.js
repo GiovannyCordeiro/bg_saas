@@ -82,7 +82,17 @@ export default class extends Controller {
   }
 
   updateHiddenInputPlayer(){
-    this.hiddenFieldListPlayerSessionTarget.value = JSON.stringify(Array.from(playersName));
+
+    let container = this.hiddenFieldListPlayerSessionTarget
+    container.innerHTML = null
+
+    Array.from(playersName).forEach(player => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'session_record[list_session_player][]';
+      input.value = player;
+      container.appendChild(input);
+    })
   }
 
   updateDisplayPlayerNames(){
@@ -125,7 +135,17 @@ export default class extends Controller {
   }
 
   updateHiddenInputGames(){
-    this.sessionGameListHiddenFieldTarget.value = JSON.stringify(Array.from(gamesName));
+
+    let container = this.sessionGameListHiddenFieldTarget
+    container.innerHTML = ''
+
+    Array.from(gamesName).forEach(game => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = 'session_record[list_session_game][]';
+      input.value = game;
+      container.appendChild(input);
+    })
   }
 
   updateDisplayGames(){
