@@ -39,10 +39,6 @@ class SessionRecordsController < ApplicationController
       game_saved = Game.create(title: game_name)
       @session_record.list_session_game.create(game: game_saved)
     end
-
-
-
-    # puts "Lists players: #{list_session_player_params}"E
   end
 
   def show
